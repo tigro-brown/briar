@@ -1,5 +1,6 @@
 package org.briarproject.bramble.db;
 
+import org.briarproject.bramble.api.contact.ContactId;
 import org.briarproject.bramble.api.crypto.SecretKey;
 import org.briarproject.bramble.api.db.DatabaseConfig;
 import org.briarproject.bramble.api.db.DbClosedException;
@@ -91,6 +92,11 @@ class HyperSqlDatabase extends JdbcDatabase {
 			tryToClose(c, LOG, WARNING);
 			throw new DbException(e);
 		}
+	}
+
+	@Override
+	public void setContactNotes(Connection txn, ContactId c, String alias) {
+
 	}
 
 	@Override

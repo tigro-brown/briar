@@ -265,6 +265,24 @@ class ContactManagerImpl implements ContactManager, EventListener {
 	}
 
 	@Override
+	public void setContactNote(Transaction txn, ContactId c,
+			@Nullable String note) throws DbException {
+		if (note != null) {
+			int noteLength = toUtf8(note).length;
+			if (noteLength == 0 || noteLength > MAX_AUTHOR_NAME_LENGTH)
+				throw new IllegalArgumentException();
+		}
+		System.out.println("setting contact note in DB: " + note);
+		db.setContactNotes(txn, c, note);
+	}
+
+	@Override
+	public void setContactNote(ContactId c, @Nullable String note)
+			throws DbException {
+		db.transaction(false, txn -> setContactNote(txn, c, note));
+	}
+
+	@Override
 	public boolean contactExists(AuthorId remoteAuthorId,
 			AuthorId localAuthorId) throws DbException {
 		return db.transactionWithResult(true, txn ->

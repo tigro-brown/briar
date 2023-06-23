@@ -24,6 +24,9 @@ public class Contact {
 	private final PublicKey handshakePublicKey;
 	private final boolean verified;
 
+	@Nullable
+	private final String notes;
+
 	public Contact(ContactId id, Author author, AuthorId localAuthorId,
 			@Nullable String alias, @Nullable PublicKey handshakePublicKey,
 			boolean verified) {
@@ -38,6 +41,7 @@ public class Contact {
 		this.alias = alias;
 		this.handshakePublicKey = handshakePublicKey;
 		this.verified = verified;
+		this.notes = "test note";
 	}
 
 	public ContactId getId() {
@@ -54,7 +58,13 @@ public class Contact {
 
 	@Nullable
 	public String getAlias() {
+		System.out.println("Alias: " + alias);
 		return alias;
+	}
+
+	public String getNotes() {
+		System.out.println("Notes: " + notes);
+		return notes;
 	}
 
 	@Nullable

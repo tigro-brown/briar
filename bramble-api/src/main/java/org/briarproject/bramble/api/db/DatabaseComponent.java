@@ -728,6 +728,9 @@ public interface DatabaseComponent extends TransactionManager {
 	void setContactAlias(Transaction txn, ContactId c, @Nullable String alias)
 			throws DbException;
 
+	void setContactNotes(Transaction txn, ContactId c, @Nullable String note)
+		throws DbException;
+
 	/**
 	 * Sets the given group's visibility to the given contact.
 	 */

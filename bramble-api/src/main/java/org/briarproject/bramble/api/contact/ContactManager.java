@@ -251,6 +251,13 @@ public interface ContactManager {
 	boolean contactExists(Transaction txn, AuthorId remoteAuthorId,
 			AuthorId localAuthorId) throws DbException;
 
+
+	void setContactNote(Transaction txn, ContactId c, @Nullable String note)
+			throws DbException;
+	void setContactNote(ContactId c, @Nullable String note)
+			throws DbException;
+
+
 	/**
 	 * Returns true if a contact with this {@code remoteAuthorId} belongs to
 	 * the local pseudonym with this {@code localAuthorId}.

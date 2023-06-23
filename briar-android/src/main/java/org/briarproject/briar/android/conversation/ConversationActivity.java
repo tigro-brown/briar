@@ -430,6 +430,14 @@ public class ConversationActivity extends BriarActivity
 		} else if (itemId == R.id.action_social_remove_person) {
 			askToRemoveContact();
 			return true;
+		} else if (itemId == R.id.action_add_personal_note) {
+			// TODO: add some method to add a personal note
+			NotesDialogFragment.newInstance().show(
+					getSupportFragmentManager(), NotesDialogFragment.TAG);
+			LOG.info("adding a personal note");
+			// TODO: remove this later
+			// signOut(true, true);
+			return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}

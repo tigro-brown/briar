@@ -318,6 +318,14 @@
 	<string name="pending_contact_updated_toast">Pending contact updated</string>
 	<string name="info_both_must_enter_links">You must both add each other\'s links</string>
 
+	<!-- Personal notes -->
+	<string name="add_personal_note">Add personal note</string>
+	<string name="set_contact_note">Notes (private)</string>
+	<string name="set_contact_note_hint">Private notes</string>
+
+
+
+
 	<!-- Peer trust levels -->
 
 	<string name="peer_trust_level_unverified">Unverified contact</string>

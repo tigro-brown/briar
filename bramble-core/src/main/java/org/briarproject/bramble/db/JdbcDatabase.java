@@ -1538,6 +1538,7 @@ abstract class JdbcDatabase implements Database<Connection> {
 				byte[] handshakePub = rs.getBytes(7);
 				AuthorId localAuthorId = new AuthorId(rs.getBytes(8));
 				boolean verified = rs.getBoolean(9);
+				String note = rs.getString(10);
 				Author author =
 						new Author(authorId, formatVersion, name, publicKey);
 				PublicKey handshakePublicKey = handshakePub == null ?

@@ -55,4 +55,9 @@
 		</menu>
 	</item>
 
+	<item
+		android:id="@+id/action_add_personal_note"
+		android:title="@string/add_personal_note"
+		app:showAsAction="never" />
+
 </menu>

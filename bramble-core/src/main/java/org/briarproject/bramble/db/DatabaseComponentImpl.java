@@ -7,6 +7,7 @@ import org.briarproject.bramble.api.contact.PendingContact;
 import org.briarproject.bramble.api.contact.PendingContactId;
 import org.briarproject.bramble.api.contact.event.ContactAddedEvent;
 import org.briarproject.bramble.api.contact.event.ContactAliasChangedEvent;
+import org.briarproject.bramble.api.contact.event.ContactNoteChangedEvent;
 import org.briarproject.bramble.api.contact.event.ContactRemovedEvent;
 import org.briarproject.bramble.api.contact.event.ContactVerifiedEvent;
 import org.briarproject.bramble.api.contact.event.PendingContactAddedEvent;
@@ -1146,6 +1147,17 @@ class DatabaseComponentImpl<T> implements DatabaseComponent {
 			throw new NoSuchContactException();
 		transaction.attach(new ContactAliasChangedEvent(c, alias));
 		db.setContactAlias(txn, c, alias);
+	}
+
+	@Override
+	public void setContactNotes(Transaction transaction, ContactId c,
+			@Nullable String note) throws DbException {
+		if (transaction.isReadOnly()) throw new IllegalArgumentException();
+		T txn = unbox(transaction);
+		if (!db.containsContact(txn, c))
+			throw new NoSuchContactException();
+		transaction.attach(new ContactNoteChangedEvent(c, note));
+		db.setContactNotes(txn, c, note);
 	}
 
 	@Override

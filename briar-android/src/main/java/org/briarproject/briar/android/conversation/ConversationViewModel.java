@@ -266,6 +266,19 @@ public class ConversationViewModel extends DbViewModel
 		});
 	}
 
+	void setContactNote(String note) {
+		System.out.println("setting contact note: " + note);
+		runOnDbThread(() -> {
+			try {
+				contactManager.setContactNote(requireNonNull(contactId),
+						note.isEmpty() ? null : note);
+				loadContact(contactId);
+			} catch (DbException e) {
+				handleException(e);
+			}
+		});
+	}
+
 	@Override
 	@UiThread
 	public LiveData<AttachmentResult> storeAttachments(Collection<Uri> uris,
